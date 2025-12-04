@@ -65,7 +65,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // didn't rename this too much to avoid breaking meaning
   final List<Review> myReviews = [];
 
   Future<void> addReview() async {
@@ -78,7 +77,6 @@ class _HomePageState extends State<HomePage> {
 
     if (next == null) return;
 
-    // intentionally not destructuring for a more “human” feel
     final newTitle = next["title"] as String;
     final newRate = next["rating"] as int;
     final newComment = next["comment"] as String?;
@@ -107,7 +105,6 @@ class _HomePageState extends State<HomePage> {
     if (edited == null) return;
 
     setState(() {
-      // slightly verbose on purpose
       myReviews[index].title = edited["title"] as String;
       myReviews[index].rating = edited["rating"] as int;
       myReviews[index].comment = edited["comment"] as String?;
@@ -170,7 +167,6 @@ class _ReviewFormPageState extends State<ReviewFormPage> {
   void initState() {
     super.initState();
 
-    // left structure intact but slightly re-ordered values
     form = FormGroup({
       "title": FormControl<String>(
         value: widget.review != null ? widget.review!.title : "",
@@ -199,7 +195,6 @@ class _ReviewFormPageState extends State<ReviewFormPage> {
       onPressed: () {
         if (!form.valid) return;
 
-        // spreading the form for clarity — a typical human quirk
         final returnMap = {
           "title": form.value["title"],
           "rating": form.value["rating"],
